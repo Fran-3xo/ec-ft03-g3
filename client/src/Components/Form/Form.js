@@ -10,7 +10,7 @@ import {
 } from '../../Actions/index.js';
 import {connect} from 'react-redux';
 
-function Form({products, setCategory, deleteProdCategory}) {
+function Form({products, setCategory, deleteProdCategory, postProducts, putProducts}) {
 	const [input, setInput] = useState({});
 	const [select, setSelect] = useState('post');
 	const [id, setId] = useState();

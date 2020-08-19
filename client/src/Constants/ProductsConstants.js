@@ -7,3 +7,4 @@ export const POST_PRODUCTS = 'POST_PRODUCTS';
 export const PUT_PRODUCTS = 'PUT_PRODUCTS';
 export const PUT_CATEGORY = 'PUT_CATEGORY';
 export const POST_CATEGORY = 'POST_CATEGORY';
+export const FILTER_BY_CATEGORY = 'FILTER_BY_CATEGORY';

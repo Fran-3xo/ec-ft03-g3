@@ -8,6 +8,7 @@ import {
 	POST_PRODUCTS,
 	PUT_PRODUCTS,
 	GET_PRODUCTS,
+	FILTER_BY_CATEGORY,
 } from '../Constants/ProductsConstants';
 const inicialState = {
 	products: [],
@@ -15,8 +16,7 @@ const inicialState = {
 	putProduct: {},
 	category: {},
 	putCat: {},
-	product: {},
-	putProduct: {},
+	catProducts: [],
 };
 
 export default function rootReducer(state = inicialState, action) {
@@ -48,15 +48,20 @@ export default function rootReducer(state = inicialState, action) {
 				...state,
 				putProduct: action.putProduct,
 			};
-			case POST_CATEGORY:
-    	return {
-        ...state,
-        category: state.category,
-    	};
+		case POST_CATEGORY:
+			return {
+				...state,
+				category: state.category,
+			};
 		case PUT_CATEGORY:
 			return {
 				...state,
 				putCat: action.putCat,
+			};
+		case FILTER_BY_CATEGORY:
+			return {
+				...state,
+				catProducts: action.catProducts,
 			};
 		default:
 			return state;

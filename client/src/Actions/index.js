@@ -8,6 +8,7 @@ import {
 	PUT_PRODUCTS,
 	POST_CATEGORY,
 	PUT_CATEGORY,
+	FILTER_BY_CATEGORY,
 } from '../Constants/ProductsConstants';
 
 export function getProducts() {
@@ -34,7 +35,6 @@ export function setCategory(prodId, catId) {
 		return axios
 			.post(`http://localhost:3005/products/${prodId}/category/${catId}`)
 			.then(res => {
-				console.log(res.data);
 				dispatch({type: SET_CATEGORY});
 			})
 			.catch(err => console.log(err));
@@ -46,7 +46,6 @@ export function deleteProdCategory(prodId, catId) {
 		return axios
 			.delete(`http://localhost:3005/products/${prodId}/category/${catId}`)
 			.then(res => {
-				console.log(res.data);
 				dispatch({type: DELETE_PROD_CATEGORY});
 			})
 			.catch(err => console.log(err));
@@ -92,6 +91,17 @@ export function putProducts(product, id) {
 			.put(`http://localhost:3005/products/${id}`, product)
 			.then(res => {
 				dispatch({type: PUT_PRODUCTS, product});
+			})
+			.catch(err => console.log(err));
+	};
+}
+
+export function filterByCategory(categoria) {
+	return function (dispatch) {
+		return axios
+			.get(`http://localhost:3005/products/category/${categoria}`)
+			.then(res => {
+				dispatch({type: FILTER_BY_CATEGORY, catProducts: res.data});
 			})
 			.catch(err => console.log(err));
 	};
